@@ -7,6 +7,7 @@
 	
 	public class World extends BaseMc
 	{
+		var objects = new Array();
 		var win = false;
 		var timer:Timer = new Timer(3000);
 		
@@ -16,10 +17,28 @@
 		
 		var menu = null;
 		
+		var totalLanes = 6;
+		
 		public function World(lvl :Number)
 		{
-			this.gotoAndStop("lvl"+lvl);
-			addEventListener(MouseEvent.CLICK,selectArea);
+			gotoAndStop("lvl"+lvl);
+			global.world = this;
+			
+			while(this.map.numChildren)
+			{
+				var obj = this.map.getChildAt(0);
+				this.map.removeChild(obj);
+				addChild(obj);
+			}
+			removeChild(this.map);
+			//addEventListener(MouseEvent.CLICK,selectArea);
+			
+			for(var i=0; i<3; i++)
+			{
+				createCastle('a',i,50,200*i + 200);
+				createCastle('AI',i,750,200*i + 200);
+			}
+			
 		}
 		override public function display()
 		{
@@ -74,6 +93,16 @@
 		{
 			Utils.kill(menu);
 			menu = new RadialMenu(x,y,this,obj);
+		}
+		public function createCastle(str,lane,posx,posy)
+		{
+			var castle = new Castle();
+				castle.name = str;
+				castle.lane = lane;
+				Castle(castle).changeOwner();
+				castle.x = posx;
+				castle.y = posy;
+			addChild(castle);
 		}
 	}
 	

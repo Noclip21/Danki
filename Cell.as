@@ -15,7 +15,7 @@
 		{
 			x = posx;
 			y = posy;
-			target.addChild(this);
+			global.GUI.addChild(this);
 			world = target;
 			
 			graphics.clear();
@@ -31,15 +31,6 @@
 			
 			if(global.world.menu)
 				global.world.menu.visible=false;
-		}
-		public function createCastle(str)
-		{
-			var castle = new Castle();
-				castle.name = str;
-				Castle(castle).changeOwner();
-				castle.x = x + world.cellSize/2;
-				castle.y = y + world.cellSize/2;
-			world.addChild(castle);
 		}
 	}
 	

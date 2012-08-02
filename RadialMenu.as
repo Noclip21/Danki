@@ -11,14 +11,18 @@
 		{
 			var ratius = width/2;
 			
-			x = posx;
-				if(x - ratius < 0) x = ratius;
-				if(x + ratius > target.width) x = target.width - ratius;
-			y = posy;
-				if(y - ratius < 0) y = ratius;
-				if(y + ratius > target.height) y = target.height - ratius;
-				
-			target.addChild(this);
+			var newx = x = posx;
+				if(x - ratius < 0) newx = ratius;
+				if(x + ratius > target.width) newx = target.width - ratius;
+			var newy = y = posy;
+				if(y - ratius < 0) newy = ratius;
+				if(y + ratius > target.height) newy = target.height - ratius;
+			
+			Utils.move(this,Utils.pAt(newx,newy));
+			
+			
+			
+			global.GUI.addChild(this);
 			owner = mc;
 			
 			var n = mc.RMButtons.length;

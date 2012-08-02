@@ -5,12 +5,14 @@
 	import flash.events.MouseEvent;
 	
 	
-	public class Castle extends BaseMc
+	public class Castle extends CenarioObject
 	{
 		var units 			= new Array();
 		var _hp 			= 8000;
-		var _unitStamina 	= 1;
+		var _unitStamina 	= 3;
 		var _spawnRate 		= 1;
+		var lane = 0;
+		var AI = false;
 		
 		var attacker = null;
 		
@@ -31,9 +33,13 @@
 		public function changeOwner()
 		{
 			if(name == "AI")
+			{
 				setForAI();
-			else
+				AI = true;
+			}else{
 				setForPlayer();
+				AI = false;
+			}
 		}
 		
 		public function setForAI()
@@ -85,7 +91,7 @@
 
 		public function createUnit()
 		{
-			this.parent.addChild(new Unit(this,_unitStamina));
+			parent.addChild(new Unit(this,_unitStamina));
 		}
 		
 		
@@ -98,7 +104,7 @@
 		override public function display()
 		{
 			Castle_display();
-			BaseMc_display();
+			CenarioObject_display();
 		}
 	}
 	

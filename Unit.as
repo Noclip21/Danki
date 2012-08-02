@@ -1,8 +1,9 @@
 ﻿package
 {
 	
+	import flash.events.MouseEvent;
 	
-	public class Unit extends BaseMc
+	public class Unit extends CenarioObject
 	{
 		
 		var base :Castle;
@@ -11,7 +12,8 @@
 		var vel = 1;
 		var hp = 100;
 		var power = 1;
-		var radius = 200;
+		var radius = 100;
+		var AI = false;
 		
 		var attacker = null;
 		
@@ -23,12 +25,22 @@
 			this.x = spawn.x;
 			this.y = spawn.y;
 			base = spawn;
+			AI = spawn.AI;
+			
+			/*addEventListener(MouseEvent.CLICK,function()
+							 {
+								startDrag(); 
+								vel = 0;
+							 });*/
+			
+			alpha = 0;
+			Utils.fade(this,0.2);
 		}
 		
 		
 		public function initVars(stamina :Number)
 		{
-			radius 	= 200 - stamina*10;
+			//radius 	= 200 - stamina*10;
 			hp 		= 200*stamina;
 			vel 	= .3*stamina;
 			power 	= stamina;
@@ -43,14 +55,16 @@
 		
 		public function wait()
 		{
-			this.gotoAndStop("idle");
+			if(AI) this.gotoAndStop("AIidle");
+			else this.gotoAndStop("idle");
 			
 			avelx = 0;
 			avely = 0;
 		}
 		public function attack(obj :Object)
 		{
-			this.gotoAndStop("attack");
+			if(AI)  this.gotoAndStop("AIattack");
+			else this.gotoAndStop("attack");
 			
 			avelx = 0;
 			avely = 0;
@@ -64,7 +78,8 @@
 		}
 		public function walk(obj :Object)
 		{ 
-			this.gotoAndStop("walk");
+			if(AI) this.gotoAndStop("AIwalk");
+			else this.gotoAndStop("walk");
 			
 			avelx = Math.cos(Utils.ang(this,BaseMc(obj)))*vel;
 			avely = Math.sin(Utils.ang(this,BaseMc(obj)))*vel;
@@ -77,7 +92,7 @@
 		public function die()
 		{
 			Utils.removeObject(this,GlobalVars.vars.objects);
-			this.parent.addChild(new Exp(this));
+			this.parent.addChild(new UnitDead(this));
 			Utils.kill(this);
 		}
 		
@@ -87,7 +102,7 @@
 		{
 			var objects = GlobalVars.vars.castles;
 			for(var i=0; i<objects.length; i++)
-				if(objects[i].name != base.name)
+				if(objects[i].name != base.name && objects[i].lane == base.lane)
 					return objects[i];
 			return null;
 		}
@@ -141,7 +156,7 @@
 		override public function display()
 		{
 			Unit_display();
-			BaseMc_display();
+			CenarioObject_display();
 		}
 	}
 	

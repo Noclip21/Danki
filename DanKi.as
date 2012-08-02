@@ -27,14 +27,15 @@
 		
 		public function nextLevel()
 		{
-			//MovieClip(root).addChild(global.GUI = new MovieClip());
-			
 			global.lvl = 1;
 			
 			global.castles.length = 0;
 			global.objects.length = 0;
 			
-			MovieClip(root).addChild(global.world = new World(global.lvl));
+			global.world = new World(global.lvl);
+			MovieClip(root).addChild(global.world);
+			
+			MovieClip(root).addChild(global.GUI = new MovieClip());
 		}
 		
 		
