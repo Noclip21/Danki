@@ -9,29 +9,26 @@
 	{
 		
 		var objects = GlobalVars.vars.objects = new Array();
-		GlobalVars.vars.castles = new Array();
 		
-		var level = 0;
-		var world :World;
+		
+		var P1 = GlobalVars.vars.P1 = new Object();
+		var P2 = GlobalVars.vars.P2 = new Object();
+		
+		var bars = GlobalVars.vars.bars = new Array();
 		
 		public function DanKi()
 		{
-			nextLevel();
-			
 			stage.addEventListener(Event.ENTER_FRAME,event_enterFrame);
 			
+			resetStats(P1);
+			resetStats(P2);
 		}
-		
-		public function nextLevel()
+		public function resetStats(P)
 		{
-			level++;
-			
-			GlobalVars.vars.castles.length = 0;
-			GlobalVars.vars.objects.length = 0;
-			
-			MovieClip(root).addChild(world = new World(level));
+			P.money = 18000;
+			P.inv = 0;
+			P.price = 50;
 		}
-		
 		
 		
 		public function event_enterFrame(e :Event)

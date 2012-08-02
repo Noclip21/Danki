@@ -1,13 +1,13 @@
 Danki
 =====
 
-V1
+V2
 
-> Unidades de 2 times inimigos nascem em suas respectivas bases.
-> Unidades movem até a base inimiga com a intenção de destruí-la.
-> Unidades destroem as outras unidades inimigas que aparecerem no caminho.
-> Se a base inimiga for destruída, suas unidades tem o mesmo destino.
-> Rotação de mapa acontece quando sobrar só um time vivo.
-> Configuração da fase customizável: HP do castelo e unidade, quantidade de unidade etc.
+- 2 Jogadores, sendo 1 IA.
+- Cada jogador tem 3 atributos, dinheiro, midia e preço do produto.
+- Midia custa dinheiro.
+- Um cliente que se move para o bar que apresenta maior atração.
+- Função de atração definida por: 2*midia - 8*preço - (distancia para o bar)/2;
+- IA tem preço fixo, mas muda midia tentando ultrapassar o outro jogador.
 
-- Nolcip21
+> Noclip21
