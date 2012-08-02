@@ -2,6 +2,7 @@
 {
 	
 	import flash.events.MouseEvent;
+	import flash.display.MovieClip;
 	
 	public class Unit extends CenarioObject
 	{
@@ -17,11 +18,12 @@
 		
 		var attacker = null;
 		
+		public static var units = ['lanceiro','vinyl','twilight','rainbowDash'];
 		
-		public function Unit(spawn :Castle,stamina :Number)
+		public function Unit(spawn :Castle,stamina :Number,type :String)
 		{
 			spawn.units.push(this);
-			initVars(stamina);
+			initVars(stamina,type);
 			this.x = spawn.x;
 			this.y = spawn.y;
 			base = spawn;
@@ -38,8 +40,11 @@
 		}
 		
 		
-		public function initVars(stamina :Number)
+		public function initVars(stamina :Number,type :String)
 		{
+			name = type;
+			gotoAndStop(type);
+			
 			//radius 	= 200 - stamina*10;
 			hp 		= 200*stamina;
 			vel 	= .3*stamina;
@@ -55,16 +60,16 @@
 		
 		public function wait()
 		{
-			if(AI) this.gotoAndStop("AIidle");
-			else this.gotoAndStop("idle");
+			if(AI) MovieClip(getChildAt(0)).gotoAndStop("AIidle");
+			else MovieClip(getChildAt(0)).gotoAndStop("idle");
 			
 			avelx = 0;
 			avely = 0;
 		}
 		public function attack(obj :Object)
 		{
-			if(AI)  this.gotoAndStop("AIattack");
-			else this.gotoAndStop("attack");
+			if(AI) MovieClip(getChildAt(0)).gotoAndStop("AIattack");
+			else MovieClip(getChildAt(0)).gotoAndStop("attack");
 			
 			avelx = 0;
 			avely = 0;
@@ -78,8 +83,8 @@
 		}
 		public function walk(obj :Object)
 		{ 
-			if(AI) this.gotoAndStop("AIwalk");
-			else this.gotoAndStop("walk");
+			if(AI) MovieClip(getChildAt(0)).gotoAndStop("AIwalk");
+			else MovieClip(getChildAt(0)).gotoAndStop("walk");
 			
 			avelx = Math.cos(Utils.ang(this,BaseMc(obj)))*vel;
 			avely = Math.sin(Utils.ang(this,BaseMc(obj)))*vel;

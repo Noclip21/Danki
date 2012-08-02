@@ -1,44 +1,40 @@
-﻿package{
-	import flash.display.MovieClip;
+﻿package
+{
 	import flash.events.MouseEvent;
 	import flash.events.Event;
 	
-	public class RadialMenu extends BaseMc
+	public class RadialMenu extends GUI
 	{
-		var owner;
+		var _owner;
 		
-		public function RadialMenu(posx,posy,target,mc)
+		public function get owner(){ return _owner; }
+		public function set owner(n){ _owner = n; }
+		
+		public function RadialMenu(posx,posy,target)
 		{
 			var ratius = width/2;
 			
 			var newx = x = posx;
 				if(x - ratius < 0) newx = ratius;
-				if(x + ratius > target.width) newx = target.width - ratius;
+				if(x + ratius > global.world.width) newx = global.world.width - ratius;
 			var newy = y = posy;
 				if(y - ratius < 0) newy = ratius;
-				if(y + ratius > target.height) newy = target.height - ratius;
+				if(y + ratius > global.world.height) newy = global.world.height - ratius;
 			
 			Utils.move(this,Utils.pAt(newx,newy));
 			
+			_owner = target;
 			
-			
-			global.GUI.addChild(this);
-			owner = mc;
-			
-			var n = mc.RMButtons.length;
+			var n = target.RMButtons.length;
 			for(var i=0; i<n; i++)
 			{
 				var obj = addChild(new RMButton);
-					obj.gotoAndStop(mc.RMButtons[i]);
+					obj.gotoAndStop(target.RMButtons[i]);
 					obj.x = ratius*Math.cos(2*Math.PI*i/n - Math.PI/2);
 					obj.y = ratius*Math.sin(2*Math.PI*i/n - Math.PI/2);
 					obj.addEventListener(MouseEvent.CLICK,pressed);
-					obj.alvo = mc;
+					obj.alvo = target;
 			}
-		}
-		public function pressed(e:Event)
-		{
-			e.target.action();
 		}
 	}
 	

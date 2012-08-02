@@ -15,9 +15,7 @@
 		var cellColor = 0xFFFF00;
 		var cell :Cell;
 		
-		var menu = null;
-		
-		var totalLanes = 6;
+		var totalLanes = 3;
 		
 		public function World(lvl :Number)
 		{
@@ -33,10 +31,10 @@
 			removeChild(this.map);
 			//addEventListener(MouseEvent.CLICK,selectArea);
 			
-			for(var i=0; i<3; i++)
+			for(var i=0; i<totalLanes; i++)
 			{
-				createCastle('a',i,50,200*i + 200);
-				createCastle('AI',i,750,200*i + 200);
+				createCastle('a',i,50,150*i + 200);
+				createCastle('AI',i,750,150*i + 200);
 			}
 			
 		}
@@ -68,11 +66,11 @@
 			DanKi(root).nextLevel();
 			Utils.kill(this);
 		}
-		function createCell(x,y)
+		/*function createCell(x,y)
 		{
-			if(menu)
+			if(Rmenu)
 			{
-				if(!menu.hitTestPoint(mouseX,mouseY))
+				if(!Rmenu.hitTestPoint(mouseX,mouseY))
 				{
 					Utils.kill(cell);
 					cell = new Cell(x,y,this);
@@ -88,12 +86,7 @@
 			var posy = Math.floor(mouseY/cellSize)*cellSize;
 			
 			createCell(posx,posy);
-		}
-		public function createRadialMenu(x,y,obj)
-		{
-			Utils.kill(menu);
-			menu = new RadialMenu(x,y,this,obj);
-		}
+		}*/
 		public function createCastle(str,lane,posx,posy)
 		{
 			var castle = new Castle();

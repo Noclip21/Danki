@@ -8,6 +8,7 @@
 		public function Exp(origin :Object)
 		{
 			super(origin);
+			mcListener = getChildAt(0);
 		}
 	}
 	

@@ -26,7 +26,7 @@
 			
 			addEventListener(MouseEvent.CLICK,function(e :MouseEvent)
 			{
-				World(global.world).createRadialMenu(x+target.cellSize/2,y+target.cellSize/2,e.target);
+				new RadialMenu(x+target.cellSize/2,y+target.cellSize/2,e.target);
 			});
 			
 			if(global.world.menu)

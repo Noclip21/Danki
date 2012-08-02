@@ -16,7 +16,8 @@
 		
 		var attacker = null;
 		
-		var RMButtons = ["addUnit","increaseStamina","deleteCastle","decreaseStamina"];
+		var RMButtons = ["increaseStamina","decreaseStamina","deleteCastle"];
+		var HMButtons = ["unit1","unit2","unit3","unit4"];
 		
 		public function set hp(n)			{ _hp = n; }
 		public function set unitStamina(n)	{ _unitStamina = n; }
@@ -61,7 +62,8 @@
 			{
 				if(global.world.cell)
 					global.world.cell.visible = false;
-				World(global.world).createRadialMenu(x,y,e.target);
+				new RadialMenu(x,y,e.target);
+				new HorizontalMenu(e.target);
 			});
 		}
 		
@@ -78,9 +80,9 @@
 				
 			this.parent.addChild(new Exp(this));
 			
-			if(global.world.menu)
-				if(global.world.menu.owner == this)
-					global.world.menu.visible = false;
+			if(GUI.Rmenu)
+				if(GUI.Rmenu.owner == this)
+					GUI.Rmenu.visible = false;
 			
 			Utils.removeObject(this,GlobalVars.vars.castles);
 			Utils.removeObject(this,GlobalVars.vars.objects);
@@ -89,9 +91,9 @@
 			delete this;
 		}
 
-		public function createUnit()
+		public function createUnit(type :String = 'lanceiro')
 		{
-			parent.addChild(new Unit(this,_unitStamina));
+			parent.addChild(new Unit(this,_unitStamina,type));
 		}
 		
 		
