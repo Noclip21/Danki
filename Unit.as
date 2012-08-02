@@ -13,18 +13,32 @@
 		var power = 1;
 		var radius = 200;
 		
-		public function dmg(n){ hp -= n; }
+		var attacker = null;
 		
 		
-		public function Unit(spawn :Castle,life :Number)
+		public function Unit(spawn :Castle,stamina :Number)
 		{
 			spawn.units.push(this);
-			hp = life;
+			initVars(stamina);
 			this.x = spawn.x;
 			this.y = spawn.y;
 			base = spawn;
 		}
 		
+		
+		public function initVars(stamina :Number)
+		{
+			radius 	= 200 - stamina*10;
+			hp 		= 200*stamina;
+			vel 	= .3*stamina;
+			power 	= stamina;
+		}
+		
+		public function dmg(n,obj)
+		{
+			hp -= n;
+			attacker = obj;
+		}
 		
 		
 		public function wait()
@@ -41,7 +55,7 @@
 			avelx = 0;
 			avely = 0;
 			
-			obj.dmg(power);
+			obj.dmg(power,this);
 			
 			if(Utils.ang(this,obj) < Math.PI/2)
 				this.scaleX = Math.abs(this.scaleX);
@@ -73,7 +87,7 @@
 		{
 			var objects = GlobalVars.vars.castles;
 			for(var i=0; i<objects.length; i++)
-				if(objects[i] != base)
+				if(objects[i].name != base.name)
 					return objects[i];
 			return null;
 		}
@@ -94,6 +108,8 @@
 		
 		public function Unit_display()
 		{
+			
+			
 			enemyBase = getEnemyBase();
 			if(enemyBase)
 			{
@@ -103,17 +119,25 @@
 				{
 					attack(enemy);
 				}else
-					walk(enemyBase);
-					
-				if(hp <= 0)
-				{
-					Utils.removeObject(this,base.units);
-					die();
-				}
+					if(attacker)
+					{
+						walk(attacker);
+						attacker = null;
+					}else
+						walk(enemyBase);
 			}else{
 				wait();
 			}
+			
+			if(hp <= 0)
+			{
+				Utils.removeObject(this,base.units);
+				die();
+			}
+			
+			
 		}
+		
 		override public function display()
 		{
 			Unit_display();

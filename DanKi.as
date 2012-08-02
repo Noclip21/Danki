@@ -7,15 +7,18 @@
 	
 	public class DanKi extends MovieClip
 	{
-		
-		var objects = GlobalVars.vars.objects = new Array();
-		GlobalVars.vars.castles = new Array();
-		
-		var level = 0;
-		var world :World;
+		var global = GlobalVars.vars;
 		
 		public function DanKi()
 		{
+			global.objects = new Array();
+			global.castles = new Array();
+			
+			global.lvl = 0;
+			global.world;
+			global.GUI;
+		
+		
 			nextLevel();
 			
 			stage.addEventListener(Event.ENTER_FRAME,event_enterFrame);
@@ -24,20 +27,22 @@
 		
 		public function nextLevel()
 		{
-			level++;
+			//MovieClip(root).addChild(global.GUI = new MovieClip());
 			
-			GlobalVars.vars.castles.length = 0;
-			GlobalVars.vars.objects.length = 0;
+			global.lvl = 1;
 			
-			MovieClip(root).addChild(world = new World(level));
+			global.castles.length = 0;
+			global.objects.length = 0;
+			
+			MovieClip(root).addChild(global.world = new World(global.lvl));
 		}
 		
 		
 		
 		public function event_enterFrame(e :Event)
 		{
-			for(var i=0; i<objects.length; i++)
-				objects[i].display();
+			for(var i=0; i<global.objects.length; i++)
+				global.objects[i].display();
 		}
 	}
 	

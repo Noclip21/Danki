@@ -9,6 +9,7 @@
 		var avely :Number = 0;
 		
 		var key = GlobalVars.vars.key;
+		var global = GlobalVars.vars;
 		
 		public function get _avelx(){ return avelx; }
 		public function get _avely(){ return avely; }
@@ -18,7 +19,7 @@
 		
 		public function BaseMc()
 		{
-			GlobalVars.vars.objects.push(this);
+			global.objects.push(this);
 		}
 		
 		
