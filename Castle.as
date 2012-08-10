@@ -3,6 +3,8 @@
 	
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 	
 	
 	public class Castle extends CenarioObject
@@ -10,11 +12,14 @@
 		var units 			= new Array();
 		var _hp 			= 8000;
 		var _unitStamina 	= 3;
-		var _spawnRate 		= 1;
+		var _spawnRate 		= 0.5;
+		var _maxUnits		= 6;
 		var lane = 0;
 		var AI = false;
 		
 		var attacker = null;
+		var spawnTimer = new Timer(1000,0);
+		var enableSpawn = true;
 		
 		var RMButtons = ["increaseStamina","decreaseStamina","deleteCastle"];
 		var HMButtons = ["unit1","unit2","unit3","unit4"];
@@ -23,12 +28,14 @@
 		public function set unitStamina(n)	{ _unitStamina = n; }
 		public function addStamina(n)		{ _unitStamina += n; }
 		public function set spawnRate(n)	{ _spawnRate = n; }
+		public function set maxUnits(n)		{ _maxUnits = n; }
 		
 		
 		public function Castle()
 		{
 			GlobalVars.vars.castles.push(this);
 			changeOwner();
+			spawnTimer.addEventListener(TimerEvent.TIMER,function(){ enableSpawn = true; });
 		}
 		
 		public function changeOwner()
@@ -93,7 +100,12 @@
 
 		public function createUnit(type :String = 'lanceiro')
 		{
-			parent.addChild(new Unit(this,_unitStamina,type));
+			if(enableSpawn && units.length < _maxUnits)
+			{
+				parent.addChild(new Unit(this,_unitStamina,type));
+				enableSpawn = false;
+				spawnTimer.start();
+			}
 		}
 		
 		
