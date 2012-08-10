@@ -17,12 +17,10 @@ Team
 
 Changelog
 
-V6
+V7
 
-- Graficos atualizados.
-- Menu horizontal criado.
-- Reestruturação de codigo.
-- Suporte para diversas unidades.
-- P0ni. P0ni everywhere.
+- Delay para criação de unidades.
+- Limitação para a quantidades de unidades por lane.
+- Alterações na taxa de criação de unidades pela AI.
 
 > Noclip21
