@@ -18,7 +18,7 @@
 		
 		var attacker = null;
 		
-		public static var units = ['lanceiro','vinyl','twilight','rainbowDash'];
+		public static var units = ['lanceiro','samurai'];
 		
 		public function Unit(spawn :Castle,stamina :Number,type :String)
 		{

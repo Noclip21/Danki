@@ -22,7 +22,7 @@
 		var enableSpawn = true;
 		
 		var RMButtons = ["increaseStamina","decreaseStamina","deleteCastle"];
-		var HMButtons = ["unit1","unit2","unit3","unit4"];
+		var HMButtons = ["unit1","unit2"];
 		
 		public function set hp(n)			{ _hp = n; }
 		public function set unitStamina(n)	{ _unitStamina = n; }
