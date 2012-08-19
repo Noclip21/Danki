@@ -17,10 +17,8 @@ Team
 
 Changelog
 
-V7
+V8
 
-- Delay para criação de unidades.
-- Limitação para a quantidades de unidades por lane.
-- Alterações na taxa de criação de unidades pela AI.
+- Adição de uma nova unidade; Samurai.
 
 > Noclip21
