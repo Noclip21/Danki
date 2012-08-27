@@ -22,7 +22,7 @@
 		var enableSpawn = true;
 		
 		var RMButtons = ["increaseStamina","decreaseStamina","deleteCastle"];
-		var HMButtons = ["unit1","unit2"];
+		var HMButtons = ["unit1","unit2","unit3"];
 		
 		public function set hp(n)			{ _hp = n; }
 		public function set unitStamina(n)	{ _unitStamina = n; }
@@ -56,7 +56,7 @@
 			Castle_display = function()
 			{
 				if(Math.random()*100 < _spawnRate)				
-					createUnit();
+					createUnit(Unit.units[Math.round(Utils.random(0,Unit.units.length-1))]);
 				
 				if(_hp <= 0)
 					die();
@@ -84,7 +84,8 @@
 		{
 			for(var i=0; i<units.length; i++)
 				units[i].die();
-				
+			
+			this.parent.addChild(new CastleDestroyed(this));
 			this.parent.addChild(new Exp(this));
 			
 			if(GUI.Rmenu)

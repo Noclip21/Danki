@@ -5,20 +5,33 @@
 	import flash.display.MovieClip;
 	
 	public class Unit extends CenarioObject
-	{
-		
+	{;		
 		var base :Castle;
 		var enemyBase :Castle;
 		
-		var vel = 1;
-		var hp = 100;
-		var power = 1;
-		var radius = 100;
-		var AI = false;
+		var hp		:Number;
+		var vel		:Number;
+		var power	:Number;
+		var radius	:Number;
 		
+		var AI :Boolean;
 		var attacker = null;
 		
-		public static var units = ['lanceiro','samurai'];
+		
+		static var _units 	= ['lanceiro',	'samurai',	'arqueiro'];
+		static var vars 	= [[0,			0,			0],		// hp
+							   [0,			0,			0],		// vel
+							   [0,			0,			0],		// power
+							   [0,			0,			0]		// radius
+							  ];
+		static var baseVars = [[150,		100,		80],	// hp
+							   [0.9,		1,			1],		// vel
+							   [1,			1.2,		.75],	// power
+							   [100,		75,			300]	// radius
+							  ];
+
+
+		public static function get units(){ return _units };
 		
 		public function Unit(spawn :Castle,stamina :Number,type :String)
 		{
@@ -28,12 +41,6 @@
 			this.y = spawn.y;
 			base = spawn;
 			AI = spawn.AI;
-			
-			/*addEventListener(MouseEvent.CLICK,function()
-							 {
-								startDrag(); 
-								vel = 0;
-							 });*/
 			
 			alpha = 0;
 			Utils.fade(this,0.2);
@@ -45,10 +52,10 @@
 			name = type;
 			gotoAndStop(type);
 			
-			//radius 	= 200 - stamina*10;
-			hp 		= 200*stamina;
-			vel 	= .3*stamina;
-			power 	= stamina;
+			hp 		= baseVars[0][Utils.getID(type,_units)] + vars[0][Utils.getID(type,_units)]*stamina;
+			vel 	= baseVars[1][Utils.getID(type,_units)] + vars[1][Utils.getID(type,_units)]*stamina;
+			power 	= baseVars[2][Utils.getID(type,_units)] + vars[2][Utils.getID(type,_units)]*stamina;
+			radius 	= baseVars[3][Utils.getID(type,_units)] + vars[3][Utils.getID(type,_units)]*stamina;
 		}
 		
 		public function dmg(n,obj)
