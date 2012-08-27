@@ -17,8 +17,9 @@ Team
 
 Changelog
 
-V8
+V9
 
-- Adição de uma nova unidade; Samurai.
+- Adição de uma nova unidade; Arqueiro.
+- Especificação das habilidades das unidades.
 
 > Noclip21
