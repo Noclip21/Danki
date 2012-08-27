@@ -9,7 +9,7 @@ Team
 - Diego Macedo
 - JP Martins
 - Luiz Murakami
-- Magno Leitão
+- Magno Leitao
 - Melo Jr
 - Rodolfo Sganzerla
 - Stephan Eilert
@@ -19,7 +19,9 @@ Changelog
 
 V9
 
-- Adição de uma nova unidade; Arqueiro.
-- Especificação das habilidades das unidades.
+- Adicao de uma nova unidade; Arqueiro.
+- Vetorizacao da unidade Lanceiro.
+- AdiÃ§Ã£o da animaÃ§Ã£o do castelo destruido.
+- Especificacao das habilidades das unidades.
 
 > Noclip21
