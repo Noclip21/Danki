@@ -19,9 +19,9 @@ Changelog
 
 V10
 
-- Adição de uma nova unidade; Cliente.
-- Adição de Casa, e Loja.
-- Implementação da nova mecânica da parte comercial.
-- Aprimoramento da estruração do código de maneira geral.
+- Adicao de uma nova unidade; Arqueiro.
+- Vetorizacao da unidade Lanceiro.
+- AdiÃ§Ã£o da animaÃ§Ã£o do castelo destruido.
+- Especificacao das habilidades das unidades.
 
 > Noclip21
