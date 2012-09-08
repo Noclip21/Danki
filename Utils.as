@@ -359,7 +359,7 @@
 					
 					mc.transform.colorTransform = color;
 					
-					if(timer.currentCount == timer.repeatCount && color.blueMultiplier == 1)
+					if(timer.currentCount >= timer.repeatCount && color.blueMultiplier == 1)
 					{
 						mc.removeEventListener(Event.ENTER_FRAME,blink);
 						timer.removeEventListener(TimerEvent.TIMER,blink);
