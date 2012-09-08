@@ -9,7 +9,7 @@ Team
 - Diego Macedo
 - JP Martins
 - Luiz Murakami
-- Magno Leitão
+- Magno Leitao
 - Melo Jr
 - Rodolfo Sganzerla
 - Stephan Eilert
