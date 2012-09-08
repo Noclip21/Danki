@@ -1,31 +1,65 @@
 ﻿package
 {
 	import flash.display.MovieClip;
-	import GlobalVars;
+	import flash.events.Event;
 	
 	public class BaseMc extends MovieClip
 	{
-		var avelx :Number = 0;
-		var avely :Number = 0;
+		var _avelx :Number = 0;
+		var _avely :Number = 0;
 		
-		var key = GlobalVars.vars.key;
+		var _lastx :Number = 0;
+		var _lasty :Number = 0;
 		
-		public function get _avelx(){ return avelx; }
-		public function get _avely(){ return avely; }
 		
-		public function set _avelx(n){ avelx = n; }
-		public function set _avely(n){ avely = n; }
+		var key = Main.key;
+		
+		
+		public function get avelx(){ return _avelx; }
+		public function get avely(){ return _avely; }
+		public function get lastx(){ return _lastx; }
+		public function get lasty(){ return _lasty; }
+		
+		public function set avelx(n){ _avelx = n; }
+		public function set avely(n){ _avely = n; }
+		
+		
+		
+		// animation vars
+		
+		var minAlpha;
+		var maxAlpha;
+		var offsetAlpha;
+		var callbackAlpha;
+		var pointMove;
+		var easyMove;
+		var callbackMove;
+		var resizeSize;
+		var resizeEasy;
+		var resizeCallback;
+		var blinkAlpha;
+		var blinktimer;
+		var blinkCount;
+		var blinkMode;
+		var callback;
+		
+		
 		
 		public function BaseMc()
 		{
-			GlobalVars.vars.objects.push(this);
+			Main.objects = this;
+			_lastx = x;
+			_lasty = y;
 		}
 		
 		
 		public function BaseMc_display()
 		{
-			this.x += avelx;
-			this.y += avely;
+			_lastx = x;
+			_lasty = y;
+			
+			x += _avelx*Main.TIME;
+			y += _avely*Main.TIME;
 		}
 		public function display()
 		{

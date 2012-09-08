@@ -1,8 +1,11 @@
 Danki
 =====
 
-V3
+V10
 
-- Versao com varios clientes.
+- Adição de uma nova unidade; Cliente.
+- Adição de Casa, e Loja.
+- Implementação da nova mecânica da parte comercial.
+- Aprimoramento da estruração do código de maneira geral.
 
 > Noclip21
