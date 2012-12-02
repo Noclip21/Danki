@@ -1,11 +1,10 @@
 Danki
 =====
 
-V9
+V11
 
-- Adicao de uma nova unidade; Arqueiro.
-- Vetorizacao da unidade Lanceiro.
-- Adicao da animacao do castelo destruido.
-- Especificacao das habilidades das unidades.
+- Redesign do cenário.
+- Redesign do menu local. 
+- Reestruturação do código em packages.
 
 > Noclip21

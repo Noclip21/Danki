@@ -1,0 +1,68 @@
+﻿package  unit
+{
+	import def.*;
+	import map.*;
+	import perspective.*;
+	import flash.utils.Timer;
+	import flash.events.TimerEvent;
+	import building.*;
+	
+	
+	public class Unit extends WorldObject
+	{
+		public static var objects :Array;
+		
+		var _building 		:Building
+		var _lane			:Number;
+		var _hp				:Number;
+		var _timer 			:Timer;
+		var timerCooldown	:Boolean;
+		
+		
+		public function get building()	{ return _building;		 }
+		public function get lane()		{ return _lane;			 }
+		public function get timer()		{ return timerCooldown;  }
+		
+		
+		public function Unit(defBuilding	:Building = null,
+							 defLane		:Number = 0,
+							 posx			:Number = 0,
+							 posy			:Number = 0,
+							 hp				:Number = 1,
+							 defTimer		:Number = 100)
+		{
+			if(!objects) objects = new Array();
+			objects.push(this);
+			
+			super(Map.currentMap,1,posx,posy);
+			
+			_building =		defBuilding;
+			_lane =			defLane;
+			_hp = 			hp;
+			_timer = 		new Timer(defTimer);
+			timerCooldown = false;
+			
+			
+			BaseMc(this).destructor = Unit_destructor;
+			
+			_timer.addEventListener(TimerEvent.TIMER,function(){ timerCooldown = false; });
+		}
+		function Unit_destructor()
+		{
+			Utils.removeObject(this,objects);
+			if(_building) Utils.removeObject(this,_building.units);
+		}
+		public function timerStart()
+		{
+			_timer.start();
+			timerCooldown = true;
+		}
+		public function dmg(damage :Number)
+		{
+			BaseMc(this).blink();
+			_hp -= damage;
+			if(_hp <= 0) BaseMc(this).kill();
+		}
+	}
+	
+}
