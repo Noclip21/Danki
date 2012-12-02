@@ -17,11 +17,10 @@ Team
 
 Changelog
 
-V10
+V11
 
-- Adicao de uma nova unidade; Arqueiro.
-- Vetorizacao da unidade Lanceiro.
-- Adição da animação do castelo destruido.
-- Especificacao das habilidades das unidades.
+- Redesign do cenário.
+- Redesign do menu local. 
+- Reestruturação do código em packages.
 
 > Noclip21
