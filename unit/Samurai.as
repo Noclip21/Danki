@@ -6,14 +6,16 @@
 	
 	public class Samurai extends Warrior
 	{
-
+		public static function get cost(){ return 30; }
+		
+		
 		public function Samurai(castle :Castle)
 		{
 			super(castle,
-				  10, 	// hp
-				  1,	// speed
+				  20, 	// hp
+				  1.2,	// speed
 				  1,	// attackForce
-				  500,	// attackTimer
+				  300,	// attackTimer
 				  100	// range
 				  );
 			

@@ -1,4 +1,4 @@
-﻿package  building
+﻿package building
 {
 	import def.*;
 	import map.*;
@@ -9,6 +9,7 @@
 	public class Loja extends Building
 	{
 		public static var objects :Array;
+		public static var incoming :Number = 30;
 		
 		
 		public function Loja(lane :Number,
@@ -21,14 +22,21 @@
 			
 			super(lane,1000,1,posx,posy);
 			
+			gotoAndStop("azul");
+			
 			//BaseMc(this).display =		Loja_display();
 			addEventListener(MouseEvent.MOUSE_UP,Loja_click);
 			
-			BaseMc(this).destructor =	Loja_destructor();
+			BaseMc(this).destructor =	Loja_destructor;
 		}
 		function Loja_destructor()
 		{
 			Utils.removeObject(this,objects);
+		}
+		public function sell(money :Number)
+		{
+			incoming += money;
+			trace(incoming);
 		}
 		function Loja_click(e :MouseEvent)
 		{

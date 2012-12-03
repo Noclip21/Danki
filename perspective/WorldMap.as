@@ -48,8 +48,7 @@
 		function WorldMap_destructor()
 		{
 			for(var i=0; i<objects.length; i++)
-			for(var j=0; j<objects[i].length; j++)
-				BaseMc(objects[i][j]).kill();
+			while(objects[i].length) objects[i][0].kill();
 				
 			while(numChildren) removeChild(getChildAt(0));
 		}

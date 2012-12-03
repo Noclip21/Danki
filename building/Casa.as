@@ -8,8 +8,6 @@
 	{
 		public static var objects :Array;
 		
-		public static var maxUnits :Number = 3;
-		
 		
 		public function Casa(lane :Number,
 							 posx :Number,
@@ -20,15 +18,18 @@
 			
 			super(lane,2000,1,posx,posy);
 			
-			BaseMc(this).display =		Loja_display;
-			BaseMc(this).destructor =	Loja_destructor;
+			maxUnits = 3;
+			
+			BaseMc(this).display =		Casa_display;
+			BaseMc(this).destructor =	Casa_destructor;
 		}
-		function Loja_destructor()
+		function Casa_destructor()
 		{
 			Utils.removeObject(this,objects);
 		}
-		function Loja_display()
+		function Casa_display()
 		{
+			if(0.3 > Math.random()*100)
 			if(Map.getBuilding(lane,Loja))
 				addUnit(Cliente);
 		}

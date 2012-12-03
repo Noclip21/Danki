@@ -6,11 +6,13 @@
 	
 	public class Lanceiro extends Warrior
 	{
-
+		public static function get cost(){ return 10; }
+		
+		
 		public function Lanceiro(castle :Castle)
 		{
 			super(castle,
-				  10, 	// hp
+				  20, 	// hp
 				  1,	// speed
 				  1,	// attackForce
 				  500,	// attackTimer

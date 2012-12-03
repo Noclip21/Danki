@@ -6,8 +6,6 @@
 	{
 		public static var objects :Array;
 		
-		public static var maxUnits :Number = 6;
-		
 		
 		public function Castle(defLane	:Number,
 							   posx		:Number,
@@ -17,6 +15,8 @@
 			objects.push(this);
 			
 			super(defLane,1000,10,posx,posy);
+			
+			maxUnits = 6;
 			
 			BaseMc(this).destructor = Castle_destructor;
 		}

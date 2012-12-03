@@ -2,10 +2,11 @@
 {
 	import def.*;
 	import map.*;
+	import gui.*;
+	import building.*;
 	import perspective.*;
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
-	import building.*;
 	
 	
 	public class Unit extends WorldObject
@@ -45,12 +46,17 @@
 			
 			BaseMc(this).destructor = Unit_destructor;
 			
-			_timer.addEventListener(TimerEvent.TIMER,function(){ timerCooldown = false; });
+			_timer.addEventListener(TimerEvent.TIMER,timerLst);
 		}
 		function Unit_destructor()
 		{
+			_timer.removeEventListener(TimerEvent.TIMER,timerLst);
 			Utils.removeObject(this,objects);
 			if(_building) Utils.removeObject(this,_building.units);
+		}
+		function timerLst(e :TimerEvent)
+		{
+			timerCooldown = false;
 		}
 		public function timerStart()
 		{
@@ -61,6 +67,7 @@
 		{
 			BaseMc(this).blink();
 			_hp -= damage;
+			new AugmentedText(x,y-20,"-"+damage,100,0xFF0000);
 			if(_hp <= 0) BaseMc(this).kill();
 		}
 	}

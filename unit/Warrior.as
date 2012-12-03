@@ -13,7 +13,7 @@
 		var _range		:Number;
 		
 		
-		public function get cpu(){ return _cpu; };
+		public function get cpu() { return _cpu; 	}
 		
 		
 		public function Warrior(defBuilding :Castle,

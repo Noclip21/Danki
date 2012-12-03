@@ -38,7 +38,6 @@
 		{
 			ref.addUnit(Lanceiro);
 		}
-
 	}
 	
 }

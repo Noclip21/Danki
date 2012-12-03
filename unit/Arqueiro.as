@@ -6,7 +6,9 @@
 	
 	public class Arqueiro extends Warrior
 	{
-
+		public static function get cost(){ return 15; }
+		
+		
 		public function Arqueiro(castle :Castle)
 		{
 			super(castle,

@@ -10,17 +10,19 @@
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.geom.Point;
+	import trigger.*;
 
 	
 	public class Map extends WorldMap
 	{
 		public static var currentMap :Map;
 		public static var level		 :Number;
-		public static var buildings   :Array;
+		public static var buildings  :Array;
+		public static var totalLanes :Number;
 		
-		public var totalLanes :Number;
-		/*public static var 
-		public static var _lane = [[ 100 */
+		
+		var triggerLst :TriggerGame;
+		
 		
 		public static function getBuilding(lane :Number,defClass :Class)
 		{
@@ -38,6 +40,8 @@
 			if(currentMap) BaseMc(currentMap).kill();
 			currentMap = this;
 			level = 	 lvl;
+			totalLanes = 5;
+			triggerLst = new TriggerGame();
 			
 			gotoAndStop('lvl'+lvl);
 			super(defParent,0,source);
@@ -48,18 +52,14 @@
 		}
 		function World_destructor()
 		{
-			var array = Utils.copy(WorldObject.objects);
-			for(var i=0; i<array.length; i++)
-				BaseMc(array[i]).kill();
+			triggerLst.kill();
 		}
 		function createBuildings()
 		{
-			var lanes = totalLanes = 5;
-			
 			buildings = new Array();
 			var base = 146;
 			var coef = 138;
-			for(var i=0; i<lanes; i++)
+			for(var i=0; i<totalLanes; i++)
 			{
 				buildings.push(new Array());
 				
