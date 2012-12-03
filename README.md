@@ -17,10 +17,9 @@ Team
 
 Changelog
 
-V11
+V12
 
-- Redesign do cenário.
-- Redesign do menu local. 
-- Reestruturação do código em packages.
+- Mecanica da parte comercial.
+- Interação entre a parte comercial e a parte da guerra.
 
 > Noclip21
