@@ -17,9 +17,12 @@ Team
 
 Changelog
 
-V12
+V13
 
-- Mecanica da parte comercial.
-- Interação entre a parte comercial e a parte da guerra.
+- Eventos globais:
+Double attack;
+Double HP;
+Double Money
+Double Clients;
 
 > Noclip21
