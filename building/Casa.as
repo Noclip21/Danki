@@ -9,6 +9,10 @@
 		public static var objects :Array;
 		
 		
+		public static var spawnRate :Number = 0.3;
+		
+		
+		
 		public function Casa(lane :Number,
 							 posx :Number,
 							 posy :Number)
@@ -17,8 +21,6 @@
 			objects.push(this);
 			
 			super(lane,2000,1,posx,posy);
-			
-			maxUnits = 3;
 			
 			BaseMc(this).display =		Casa_display;
 			BaseMc(this).destructor =	Casa_destructor;
@@ -29,7 +31,7 @@
 		}
 		function Casa_display()
 		{
-			if(0.3 > Math.random()*100)
+			if(spawnRate > Math.random()*100)
 			if(Map.getBuilding(lane,Loja))
 				addUnit(Cliente);
 		}

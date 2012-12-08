@@ -7,21 +7,46 @@
 	
 	public class Cliente extends Human
 	{
-		static var range :Number = 100;
+		public static var objects :Array;
 		
-		public static var money :Number = 5;
-		var wallet :Number;
+		
+		static var _special :Boolean;
+		static var _money 	:Number = 5;
+		
+		
+		static var range		:Number = 100;
+		public var wallet		:Number;
+		
+		
+		public static function set special(mode :Boolean)
+		{
+			_special = mode;
+			if(objects)
+			for(var i=0; i<objects.length; i++)
+				if(mode) Unit(objects[i]).onSpecial();
+				else	 Unit(objects[i]).outSpecial();
+		}
 		
 		
 		public function Cliente(spawn :Casa)
 		{
+			if(!objects) objects = new Array();
+			objects.push(this);
+			
 			super(Building(spawn),1,1,500);
 			
-			wallet = money;
+			wallet = _money;
+			
+			if(_special) onSpecial();
 			
 			gotoAndStop(Math.round(Math.random()*(totalFrames - 1) + 1));
 			
-			BaseMc(this).display = Cliente_display;
+			BaseMc(this).display = 		Cliente_display;
+			BaseMc(this).destructor =	Cliente_destructor;
+		}
+		function Cliente_destructor()
+		{
+			Utils.removeObject(this,objects);
 		}
 		function walk(target :Building)
 		{
@@ -36,7 +61,6 @@
 		function pay()
 		{
 			loja.sell(wallet);
-			new AugmentedText(x,y-10,"$"+wallet,100,0x00FF00);
 			wallet = 0;
 		}
 		function buy()

@@ -22,7 +22,6 @@
 			super(Map.currentMap,2,posx,posy);
 			
 			ref = building;
-			BaseMc(building).blink();
 			
 			alpha = 0;
 			BaseMc(this).fade(0.1,1);

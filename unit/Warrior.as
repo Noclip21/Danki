@@ -7,6 +7,14 @@
 	
 	public class Warrior extends Human
 	{
+		public static var objects :Array;
+		
+		
+		static var _special :Boolean;
+		static var _hpCoef	:Number = 1;
+		public static var attackCoef :Number = 1;
+		
+		
 		var enemyCastle :Castle;
 		var _cpu		:Boolean
 		var _attack 	:Number;
@@ -14,6 +22,23 @@
 		
 		
 		public function get cpu() { return _cpu; 	}
+		
+		public static function set special(mode :Boolean)
+		{
+			_special = mode;
+			if(objects)
+			for(var i=0; i<objects.length; i++)
+				if(!objects[i].cpu)
+				if(mode) Unit(objects[i]).onSpecial();
+				else	 Unit(objects[i]).outSpecial();
+		}
+		public static function set hpCoef(n :Number)
+		{
+			if(objects)
+			for(var i=0; i<objects.length; i++)
+				if(!objects[i].cpu)
+				objects[i].dmg(-objects[i].hp*(_hpCoef -1));
+		}
 		
 		
 		public function Warrior(defBuilding :Castle,
@@ -23,6 +48,10 @@
 								attackTimer	:Number = 1000,
 								range		:Number = 50)
 		{
+			if(!objects) objects = new Array();
+			objects.push(this);
+			
+			if(!_cpu) hp *= _hpCoef;
 			super(Building(defBuilding),hp,speed,attackTimer);
 			
 			
@@ -31,7 +60,15 @@
 			_range =	range;
 			
 			
+			if(!_cpu && _special) onSpecial();
+			
+			
 			BaseMc(this).display = Wairror_display;
+			BaseMc(this).destructor = Wairror_desctructor;
+		}
+		function Wairror_desctructor()
+		{
+			Utils.removeObject(this,objects);
 		}
 		function getEnemyCastle()
 		{
@@ -54,7 +91,10 @@
 				{
 					if(target.x > x) scaleX = Math.abs(scaleX);
 					else			 scaleX = -Math.abs(scaleX);
-					target.dmg(_attack);
+					
+					if(!_cpu)	target.dmg(_attack*attackCoef);
+					else		target.dmg(_attack);
+					
 					timerStart();
 				}
 				

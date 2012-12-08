@@ -34,10 +34,6 @@
 		{
 			ref.addUnit(Lanceiro);
 		}
-		function b5_click(e :MouseEvent)
-		{
-			ref.addUnit(Lanceiro);
-		}
 	}
 	
 }

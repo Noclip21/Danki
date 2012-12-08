@@ -11,7 +11,7 @@
 		public static var objects :Array;
 		
 		public var units	:Array;
-		public var maxUnits :Number;
+		public static var maxUnits :Number = 6;
 		
 		
 		public function Building(defLane		:Number,
@@ -26,7 +26,6 @@
 			super(null,defLane,posx,posy,hp,defSpawnTime);
 			
 			units = new Array();
-			maxUnits = 6;
 			
 			BaseMc(this).destructor = Building_destructor;
 		}

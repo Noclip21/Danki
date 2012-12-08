@@ -7,7 +7,7 @@
 	
 	public class Human extends Unit
 	{
-		public var objects :Array;
+		public static var objects :Array;
 		
 		
 		var _speed :Number;

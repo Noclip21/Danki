@@ -13,6 +13,11 @@
 	{
 		public static var objects :Array;
 		
+		
+		static const SPECIAL_COLOR :uint = 0x00FF00;
+		public static var _special :Boolean;
+		
+		
 		var _building 		:Building
 		var _lane			:Number;
 		var _hp				:Number;
@@ -23,6 +28,8 @@
 		public function get building()	{ return _building;		 }
 		public function get lane()		{ return _lane;			 }
 		public function get timer()		{ return timerCooldown;  }
+		
+		public function get hp(){ return _hp; }
 		
 		
 		public function Unit(defBuilding	:Building = null,
@@ -65,10 +72,17 @@
 		}
 		public function dmg(damage :Number)
 		{
-			BaseMc(this).blink();
 			_hp -= damage;
 			new AugmentedText(x,y-20,"-"+damage,100,0xFF0000);
 			if(_hp <= 0) BaseMc(this).kill();
+		}
+		public function onSpecial()
+		{
+			color(SPECIAL_COLOR,0.5);
+		}
+		public function outSpecial()
+		{
+			color(SPECIAL_COLOR,0);
 		}
 	}
 	
