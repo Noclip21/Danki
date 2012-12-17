@@ -1,17 +1,20 @@
 ﻿package gui
 {
 	import building.*;
-	import unit.*;
-	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	
 	
-	public class GuiLocalCastle extends GuiLocal
+	public class GuiLocalSubmenuCastle extends GuiLocalSubmenu
 	{
-
-		public function GuiLocalCastle(castle :Castle)
+		var unit :Class;
+		
+		
+		public function GuiLocalSubmenuCastle(castle	:Castle,
+											  unitClass	:Class)
 		{
-			super(castle,castle.x+70,castle.y-123);
+			super(castle,castle.x+283,castle.y-124)
+			
+			unit =	unitClass;
 			
 			b1.addEventListener(MouseEvent.MOUSE_UP,b1_click);
 			b2.addEventListener(MouseEvent.MOUSE_UP,b2_click);
@@ -20,19 +23,23 @@
 		}
 		function b1_click(e :MouseEvent)
 		{
-			new GuiLocalSubmenuCastle(Castle(ref),Arqueiro);
+			ref.addUnit(unit);
+			GuiLocal.menu.kill();
 		}
 		function b2_click(e :MouseEvent)
 		{
-			new GuiLocalSubmenuCastle(Castle(ref),Lanceiro);
+			ref.addUnit(unit);
+			GuiLocal.menu.kill();
 		}
 		function b3_click(e :MouseEvent)
 		{
-			new GuiLocalSubmenuCastle(Castle(ref),Samurai);
+			ref.addUnit(unit);
+			GuiLocal.menu.kill();
 		}
 		function b4_click(e :MouseEvent)
 		{
-			new GuiLocalSubmenuCastle(Castle(ref),Lanceiro);
+			ref.addUnit(unit);
+			GuiLocal.menu.kill();
 		}
 	}
 	

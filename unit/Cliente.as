@@ -11,11 +11,10 @@
 		
 		
 		static var _special :Boolean;
-		static var _money 	:Number = 5;
 		
 		
-		static var range		:Number = 100;
-		public var wallet		:Number;
+		static var range	:Number = 100;
+		public var bought	:Boolean;
 		
 		
 		public static function set special(mode :Boolean)
@@ -35,7 +34,7 @@
 			
 			super(Building(spawn),1,1,500);
 			
-			wallet = _money;
+			bought = false;
 			
 			if(_special) onSpecial();
 			
@@ -58,21 +57,21 @@
 			
 			if(Utils.dist(this,casa) <= range) BaseMc(this).kill();
 		}
-		function pay()
-		{
-			loja.sell(wallet);
-			wallet = 0;
-		}
 		function buy()
 		{
-			if(wallet > 0)
+			loja.sell(Math.round(Math.random()*(Loja.products.length-1)));
+			bought = true;
+		}
+		function goBuy()
+		{
+			if(!bought)
 				if(Utils.dist(this,loja) <= range)
 				{
 					if(avelx != 0 || avely != 0) timerStart();
 					
 					if(!timer)
 					{
-						pay();
+						buy();
 						timerStart();
 					}
 					
@@ -82,9 +81,9 @@
 		}
 		function Cliente_display()
 		{
-			if(wallet > 0)
+			if(!bought)
 			{
-				if(loja) buy();
+				if(loja) goBuy();
 				else	 goHome();
 			}else
 				goHome();

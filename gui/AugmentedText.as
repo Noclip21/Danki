@@ -25,6 +25,7 @@
 				tf.text = string;
 				tf.embedFonts = true;
 				tf.setTextFormat(format);
+				tf.width = 500;
 				addChild(tf);
 			
 			super(new Point(posx,posy))

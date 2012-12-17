@@ -10,6 +10,8 @@
 	public class Loja extends Building
 	{
 		public static var objects		:Array;
+		
+		public static var products		:Array = [5,5,5,5]; // cost
 		public static var incoming		:Number = 30;
 		public static var incomingCoef	:Number = 1;
 		
@@ -53,11 +55,14 @@
 		{
 			Utils.removeObject(this,objects);
 		}
-		public function sell(money :Number)
+		public function sell(productId :Number)
 		{
-			money *= incomingCoef;
-			incoming += money;
-			new AugmentedText(x,y-10,"$"+money,100,0x00FF00);
+			if(productId >= 0 && productId < products.length)
+			{
+				var money :Number = products[productId]*incomingCoef;
+					incoming += money;
+					new AugmentedText(x,y-10,"Saquê: "+productId+" $"+money,100,0x00FF00);
+			}
 		}
 		function Loja_click(e :MouseEvent)
 		{

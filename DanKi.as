@@ -16,7 +16,7 @@
 		}
 		public static function nextLevel()
 		{
-			new Map(ref,new Cenario());
+			new Map(new Cenario());
 		}
 	}
 }

@@ -25,8 +25,8 @@
 			
 			if(numCastlePLayer < Map.totalLanes)
 			{
-				GlobalEvent.kill();
 				Danki.nextLevel();
+				//GlobalEvent.kill();
 			}
 		}
 

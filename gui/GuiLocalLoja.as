@@ -9,9 +9,9 @@
 	public class GuiLocalLoja extends GuiLocal
 	{
 
-		public function GuiLocalLoja(building :Building)
+		public function GuiLocalLoja(loja :Loja)
 		{
-			super(building,MovieClip(building).x-170-width,MovieClip(building).y-70);
+			super(loja,loja.x-294,loja.y-91);
 			
 			b1.addEventListener(MouseEvent.MOUSE_UP,b1_click);
 			b2.addEventListener(MouseEvent.MOUSE_UP,b2_click);
@@ -22,18 +22,22 @@
 		function b1_click(e :MouseEvent)
 		{
 			new ReveriadAgainst(); // Double Attack
+			new GuiLocalSubmenuLoja(Loja(ref),0);
 		}
 		function b2_click(e :MouseEvent)
 		{
 			new AngnedoArchangel(); // Double HP
+			new GuiLocalSubmenuLoja(Loja(ref),1);
 		}
 		function b3_click(e :MouseEvent)
 		{
 			new IncreaseIondume(); // Double Money
+			new GuiLocalSubmenuLoja(Loja(ref),2);
 		}
 		function b4_click(e :MouseEvent)
 		{
 			new MarketsImmkag(); // Double Clients
+			new GuiLocalSubmenuLoja(Loja(ref),3);
 		}
 		function up_click(e :MouseEvent)
 		{

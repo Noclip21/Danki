@@ -1,12 +1,11 @@
 Danki
 =====
 
-V13
+V14
 
-- Eventos globais:
-Double attack;
-Double HP;
-Double Money
-Double Clients;
+- Atualização dos sprites
+- Reposicionamento dos menus locais
+- Adição de elementos nos menus locais
+- Criação dos menus globais
 
 > Noclip21

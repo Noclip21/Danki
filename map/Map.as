@@ -1,9 +1,10 @@
 ﻿package map
 {
 	import def.*;
-	import perspective.*;
-	import building.*;
+	import gui.*;
 	import unit.*;
+	import building.*;
+	import perspective.*;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	import flash.events.MouseEvent;
@@ -23,6 +24,10 @@
 		
 		var triggerLst :TriggerGame;
 		
+		var guiGlobalCommon :GuiGlobalCommon;
+		var guiGlobalLoja	:GuiGlobalLoja;
+		var guiGlobalCastle :GuiGlobalCastle;
+		
 		
 		public static function getBuilding(lane :Number,defClass :Class)
 		{
@@ -33,18 +38,24 @@
 		}
 		
 		
-		public function Map(defParent	:MovieClip,
-							source		:MovieClip,
-							lvl			:Number = 1)
+		public function Map(source	:MovieClip,
+							lvl		:Number = 1)
 		{
 			if(currentMap) BaseMc(currentMap).kill();
 			currentMap = this;
+			
+			gotoAndStop('lvl'+lvl);
+			super(Main.game,0,source);
+			
 			level = 	 lvl;
 			totalLanes = 5;
 			triggerLst = new TriggerGame();
 			
-			gotoAndStop('lvl'+lvl);
-			super(defParent,0,source);
+			guiGlobalCommon = new GuiGlobalCommon();
+			guiGlobalLoja	= new GuiGlobalLoja();
+			guiGlobalCastle = new GuiGlobalCastle();
+			
+			Loja.incoming = 0;
 			
 			createBuildings();
 			
@@ -53,6 +64,10 @@
 		function World_destructor()
 		{
 			triggerLst.kill();
+			
+			guiGlobalCommon.kill();
+			guiGlobalLoja.kill();
+			guiGlobalCastle.kill();
 		}
 		function createBuildings()
 		{
@@ -70,8 +85,18 @@
 			}
 			focusGuerra();
 		}
-		public function focusGuerra()	{ cam = new Point(1180,384); }
-		public function focusComercio() { cam = new Point(512,384);  }
+		public function focusGuerra()
+		{
+			cam = new Point(1180,384);
+			guiGlobalLoja.hide();
+			guiGlobalCastle.show();
+		}
+		public function focusComercio()
+		{
+			cam = new Point(512,384);
+			guiGlobalLoja.show();
+			guiGlobalCastle.hide();
+		}
 	}
 	
 }
