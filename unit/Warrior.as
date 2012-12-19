@@ -2,7 +2,6 @@
 {
 	import def.*;
 	import building.*;
-	import map.*;
 	import flash.geom.Point;
 	
 	public class Warrior extends Human
@@ -15,8 +14,12 @@
 		public static var attackCoef :Number = 1;
 		
 		
+		public static var unitsDead :Number = 0;
+		public static var unitsDeadCpu :Number = 0;
+		
+		
 		var enemyCastle :Castle;
-		var _cpu		:Boolean
+		var _cpu		:Boolean;
 		var _attack 	:Number;
 		var _range		:Number;
 		
@@ -68,6 +71,9 @@
 		}
 		function Wairror_desctructor()
 		{
+			unitsDead++;
+			if(cpu) unitsDeadCpu++;
+			
 			Utils.removeObject(this,objects);
 		}
 		function getEnemyCastle()

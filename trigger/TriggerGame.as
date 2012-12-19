@@ -1,8 +1,8 @@
 ﻿package  trigger
 {
-	import map.*;
-	import building.*;
 	import unit.*;
+	import screen.*;
+	import building.*;
 	
 	public class TriggerGame extends Trigger
 	{
@@ -17,16 +17,15 @@
 			var numCastleCpu :Number	= 0;
 			
 			
-			for(var i=0; i<Map.totalLanes; i++)
+			for(var i=0; i<Game.totalLanes; i++)
 			{
-				if(Map.getBuilding(i,CastlePlayer)) numCastlePLayer++;
-				if(Map.getBuilding(i,CastleCpu))	numCastleCpu++;
+				if(Game.getBuilding(i,CastlePlayer)) numCastlePLayer++;
+				if(Game.getBuilding(i,CastleCpu))	 numCastleCpu++;
 			}
 			
-			if(numCastlePLayer < Map.totalLanes)
+			if(numCastlePLayer < Game.totalLanes || numCastleCpu == 0)
 			{
-				Danki.nextLevel();
-				//GlobalEvent.kill();
+				Danki.endgameScreen();
 			}
 		}
 

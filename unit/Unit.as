@@ -1,8 +1,8 @@
 ﻿package  unit
 {
 	import def.*;
-	import map.*;
 	import gui.*;
+	import screen.*;
 	import building.*;
 	import perspective.*;
 	import flash.utils.Timer;
@@ -42,7 +42,7 @@
 			if(!objects) objects = new Array();
 			objects.push(this);
 			
-			super(Map.currentMap,1,posx,posy);
+			super(Game.currentMap,1,posx,posy);
 			
 			_building =		defBuilding;
 			_lane =			defLane;

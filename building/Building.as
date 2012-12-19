@@ -2,7 +2,7 @@
 {
 	import def.*;
 	import unit.*;
-	import map.*;
+	import screen.*;
 	import perspective.*;
 	
 	
@@ -33,7 +33,7 @@
 		{
 			for(var i=0; i<units.length; i++)
 				BaseMc(units[i]).kill();
-			Utils.removeObject(this,Map.buildings[lane]);
+			Utils.removeObject(this,Game.buildings[lane]);
 			Utils.removeObject(this,objects);
 		}
 		public function addUnit(unitClass :Class)

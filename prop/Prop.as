@@ -1,6 +1,6 @@
 ﻿package prop
 {
-	import map.*;
+	import screen.*;
 	import perspective.*;
 	import flash.geom.Point;
 	
@@ -11,7 +11,7 @@
 							 parentsToAnimation :Number = 0,
 							 callback			:Function = null)
 		{
-			super(Map.currentMap,1,point.x,point.y,false,parentsToAnimation,callback);
+			super(Game.currentMap,1,point.x,point.y,false,parentsToAnimation,callback);
 		}
 
 	}

@@ -1,22 +1,36 @@
 ﻿package
 {
 	import def.*;
-	import map.*;
+	import screen.*;
 	
 	public class Danki extends Main
 	{		
 		static var ref :Danki;
 		
 		
+		static var scr :Screen;
+		
+		
 		public function Danki()
 		{
 			ref = this;
 			
-			nextLevel();
+			mainScreen();
 		}
-		public static function nextLevel()
+		public static function mainScreen()
 		{
-			new Map(new Cenario());
+			if(scr) scr.kill();
+			scr = new MainScreen();
+		}
+		public static function gameScreen()
+		{
+			if(scr) scr.kill();
+			scr = new Game(new Cenario());
+		}
+		public static function endgameScreen()
+		{
+			if(scr) scr.kill();
+			scr = new EndgameScreen();
 		}
 	}
 }

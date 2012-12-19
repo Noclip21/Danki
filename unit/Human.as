@@ -1,7 +1,7 @@
 ﻿package unit
 {
 	import def.*;
-	import map.*;
+	import screen.*;
 	import building.*;
 	import flash.geom.Point;
 	
@@ -16,10 +16,10 @@
 		public function get speed()			{ return _speed; }
 		
 		
-		public function get casa()			{ return Casa		 (Map.getBuilding(lane,Casa			));	}
-		public function get loja()			{ return Loja		 (Map.getBuilding(lane,Loja			));	}
-		public function get castlePlayer()	{ return CastlePlayer(Map.getBuilding(lane,CastlePlayer )); }
-		public function get castleCpu()		{ return CastleCpu	 (Map.getBuilding(lane,CastleCpu	));	}
+		public function get casa()			{ return Casa		 (Game.getBuilding(lane,Casa			));	}
+		public function get loja()			{ return Loja		 (Game.getBuilding(lane,Loja			));	}
+		public function get castlePlayer()	{ return CastlePlayer(Game.getBuilding(lane,CastlePlayer )); }
+		public function get castleCpu()		{ return CastleCpu	 (Game.getBuilding(lane,CastleCpu	));	}
 		
 		
 		public function Human(defBuilding :Building,

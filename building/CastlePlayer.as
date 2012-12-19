@@ -1,8 +1,7 @@
 ﻿package building
 {
-	import map.*;
 	import gui.*;
-	import gui.*;
+	import screen.*;
 	import flash.events.MouseEvent;
 	
 	public class CastlePlayer extends Castle
@@ -20,7 +19,7 @@
 		}
 		function Castle_click(e :MouseEvent)
 		{
-			Map.currentMap.focusGuerra();
+			Game.currentMap.focusGuerra();
 			
 			new GuiLocalCastle(Castle(e.target));
 		}

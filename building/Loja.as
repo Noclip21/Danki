@@ -1,9 +1,9 @@
 ﻿package building
 {
 	import def.*;
-	import map.*;
 	import gui.*;
 	import unit.*;
+	import screen.*;
 	import flash.events.MouseEvent;
 	
 	
@@ -66,7 +66,7 @@
 		}
 		function Loja_click(e :MouseEvent)
 		{
-			Map.currentMap.focusComercio();
+			Game.currentMap.focusComercio();
 			
 			new GuiLocalLoja(this);
 		}

@@ -1,11 +1,9 @@
 Danki
 =====
 
-V14
+V15
 
-- Atualização dos sprites
-- Reposicionamento dos menus locais
-- Adição de elementos nos menus locais
-- Criação dos menus globais
+- Menu principal
+- Menu final
 
 > Noclip21

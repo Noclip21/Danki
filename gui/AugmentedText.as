@@ -22,6 +22,7 @@
 				format.bold = true;
 				format.color = defColor;
 			var tf :TextField = new TextField();
+				tf.selectable = false;
 				tf.text = string;
 				tf.embedFonts = true;
 				tf.setTextFormat(format);

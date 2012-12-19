@@ -1,4 +1,4 @@
-﻿package map
+﻿package screen
 {
 	import def.*;
 	import gui.*;
@@ -14,9 +14,9 @@
 	import trigger.*;
 
 	
-	public class Map extends WorldMap
+	public class Game extends WorldMap
 	{
-		public static var currentMap :Map;
+		public static var currentMap :Game;
 		public static var level		 :Number;
 		public static var buildings  :Array;
 		public static var totalLanes :Number;
@@ -38,10 +38,9 @@
 		}
 		
 		
-		public function Map(source	:MovieClip,
+		public function Game(source	:MovieClip,
 							lvl		:Number = 1)
 		{
-			if(currentMap) BaseMc(currentMap).kill();
 			currentMap = this;
 			
 			gotoAndStop('lvl'+lvl);
@@ -55,7 +54,9 @@
 			guiGlobalLoja	= new GuiGlobalLoja();
 			guiGlobalCastle = new GuiGlobalCastle();
 			
-			Loja.incoming = 0;
+			Loja.incoming =			30;
+			Warrior.unitsDead =		0;
+			Warrior.unitsDeadCpu =	0;
 			
 			createBuildings();
 			

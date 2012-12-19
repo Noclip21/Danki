@@ -1,7 +1,7 @@
 ﻿package gui
 {
 	import def.*;
-	import map.*;
+	import screen.*;
 	import building.*;
 	import perspective.*;
 	
@@ -20,7 +20,7 @@
 			if(submenu) BaseMc(submenu).kill();
 			submenu = this;
 			
-			super(Map.currentMap,2,posx,posy);
+			super(Game.currentMap,2,posx,posy);
 			
 			ref = building;
 			

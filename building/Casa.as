@@ -2,7 +2,7 @@
 {
 	import def.*;
 	import unit.*;
-	import map.*;
+	import screen.*;
 	
 	public class Casa extends Building
 	{
@@ -32,7 +32,7 @@
 		function Casa_display()
 		{
 			if(spawnRate > Math.random()*100)
-			if(Map.getBuilding(lane,Loja))
+			if(Game.getBuilding(lane,Loja))
 				addUnit(Cliente);
 		}
 
