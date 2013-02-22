@@ -20,19 +20,23 @@
 		}
 		function b1_click(e :MouseEvent)
 		{
-			new GuiLocalSubmenuCastle(Castle(ref),Arqueiro);
+			ref.addUnit(Arqueiro);
+			kill();
 		}
 		function b2_click(e :MouseEvent)
 		{
-			new GuiLocalSubmenuCastle(Castle(ref),Lanceiro);
+			ref.addUnit(Lanceiro);
+			kill();
 		}
 		function b3_click(e :MouseEvent)
 		{
-			new GuiLocalSubmenuCastle(Castle(ref),Samurai);
+			ref.addUnit(Samurai);
+			kill();
 		}
 		function b4_click(e :MouseEvent)
 		{
-			new GuiLocalSubmenuCastle(Castle(ref),Lanceiro);
+			ref.addUnit(Lanceiro);
+			kill();
 		}
 	}
 	

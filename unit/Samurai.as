@@ -12,8 +12,8 @@
 		public function Samurai(castle :Castle)
 		{
 			super(castle,
-				  20, 	// hp
-				  1.2,	// speed
+				  30, 	// hp
+				  0.8,	// speed
 				  1,	// attackForce
 				  300,	// attackTimer
 				  100	// range

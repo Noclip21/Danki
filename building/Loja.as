@@ -68,7 +68,7 @@
 		{
 			Game.currentMap.focusComercio();
 			
-			new GuiLocalLoja(this);
+			// new GuiLocalLoja(this);
 		}
 
 	}

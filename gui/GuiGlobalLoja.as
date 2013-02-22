@@ -1,12 +1,14 @@
 ﻿package gui
 {
+	import def.*;
+	
 	
 	public class GuiGlobalLoja extends GuiGlobal
 	{
 
 		public function GuiGlobalLoja()
 		{
-			super(595+70,703);
+			super(0,0);
 		}
 
 	}

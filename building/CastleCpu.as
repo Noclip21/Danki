@@ -20,7 +20,7 @@
 		}
 		function CastleCpu_display()
 		{
-			if(Math.random()*100 < 0.1)
+			if(Math.random()*100 < 0.05)
 				addUnit(Class(unitClasses[Math.round(Math.random()*(unitClasses.length-1))]));
 		}
 	}

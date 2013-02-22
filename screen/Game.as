@@ -43,7 +43,7 @@
 		{
 			currentMap = this;
 			
-			gotoAndStop('lvl'+lvl);
+			// gotoAndStop('lvl'+lvl);
 			super(Main.game,0,source);
 			
 			level = 	 lvl;
@@ -54,7 +54,7 @@
 			guiGlobalLoja	= new GuiGlobalLoja();
 			guiGlobalCastle = new GuiGlobalCastle();
 			
-			Loja.incoming =			30;
+			Loja.incoming =			999999;
 			Warrior.unitsDead =		0;
 			Warrior.unitsDeadCpu =	0;
 			
@@ -89,14 +89,10 @@
 		public function focusGuerra()
 		{
 			cam = new Point(1180,384);
-			guiGlobalLoja.hide();
-			guiGlobalCastle.show();
 		}
 		public function focusComercio()
 		{
 			cam = new Point(512,384);
-			guiGlobalLoja.show();
-			guiGlobalCastle.hide();
 		}
 	}
 	
