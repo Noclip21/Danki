@@ -11,7 +11,9 @@
 	{
 		public static var objects		:Array;
 		
-		public static var products		:Array = [5,5,5,5]; // cost
+		public static var products		:Array = [[5],		// cost
+												  [20]];	// quantity
+		public static var productsLen	:Number = 1;
 		public static var incoming		:Number = 30;
 		public static var incomingCoef	:Number = 1;
 		
@@ -57,11 +59,16 @@
 		}
 		public function sell(productId :Number)
 		{
-			if(productId >= 0 && productId < products.length)
+			if(productId >= 0 && productId < productsLen)
 			{
-				var money :Number = products[productId]*incomingCoef;
-					incoming += money;
-					new AugmentedText(x,y-10,"Saquê: "+productId+" $"+money,100,0x00FF00);
+				var quantity :Number = products[1][productId];
+				if(quantity > 0)
+				{
+					var money :Number = products[0][productId]*incomingCoef;
+						incoming += money;
+						products[1][productId] -= 1;
+						new AugmentedText(x,y-10,"Saquê: "+(productId+1)+" $"+money,100,0x00FF00);
+				}
 			}
 		}
 		function Loja_click(e :MouseEvent)

@@ -59,7 +59,7 @@
 		}
 		function buy()
 		{
-			loja.sell(Math.round(Math.random()*(Loja.products.length-1)));
+			loja.sell(Math.round(Math.random()*(Loja.productsLen-1)));
 			bought = true;
 		}
 		function goBuy()

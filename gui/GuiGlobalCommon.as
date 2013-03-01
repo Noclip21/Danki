@@ -9,7 +9,7 @@
 
 		public function GuiGlobalCommon()
 		{
-			super(300,0);
+			super(123,703);
 			
 			BaseMc(this).display = GuiGlobalCommon_display;
 		}

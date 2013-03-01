@@ -27,6 +27,7 @@
 		var guiGlobalCommon :GuiGlobalCommon;
 		var guiGlobalLoja	:GuiGlobalLoja;
 		var guiGlobalCastle :GuiGlobalCastle;
+		var guiGlobalTop	:GuiGlobalTop;
 		
 		
 		public static function getBuilding(lane :Number,defClass :Class)
@@ -53,8 +54,9 @@
 			guiGlobalCommon = new GuiGlobalCommon();
 			guiGlobalLoja	= new GuiGlobalLoja();
 			guiGlobalCastle = new GuiGlobalCastle();
+			guiGlobalTop	= new GuiGlobalTop();
 			
-			Loja.incoming =			999999;
+			Loja.incoming =			100;
 			Warrior.unitsDead =		0;
 			Warrior.unitsDeadCpu =	0;
 			
@@ -89,10 +91,14 @@
 		public function focusGuerra()
 		{
 			cam = new Point(1180,384);
+			guiGlobalLoja.hide();
+			guiGlobalCastle.show();
 		}
 		public function focusComercio()
 		{
 			cam = new Point(512,384);
+			guiGlobalLoja.show();
+			guiGlobalCastle.hide();
 		}
 	}
 	
